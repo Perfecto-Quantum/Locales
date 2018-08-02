@@ -1,0 +1,59 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Appium Demo Suite" verbose="0" parallel="tests">
+	<listeners>
+		<listener
+			class-name="com.quantum.listeners.QuantumReportiumListener" />
+	</listeners>
+
+	<!-- To use actual AppiumDriver classes defined -->
+	<!-- by driverClass property in env.resources dirs -->
+	<!-- Set driver.name value to perfectoDriver -->
+	<parameter name="driver.name" value="perfectoDriver" />
+
+	<test name="IOS Calc Test French" enabled="true">
+		<parameter name="driver.capabilities.model" value="iPhone.*"></parameter>
+		<parameter name="env.resources"
+			value="src/main/resources/ios" />
+			<parameter name="env.load.locales"
+			value="fr" />
+			<parameter name="env.default.locale"
+			value="fr" />
+			<parameter name="perfecto.capabilities.language"
+			value="fr" />
+			<parameter name="perfecto.capabilities.bundleId"
+			value="com.apple.mobilemail" />
+
+		<groups>
+			<run>
+				<include name="regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.quantum.tests.mail.CheckHeader" />
+		</classes>
+	</test>
+	<test name="IOS Calc Test English" enabled="true">
+		<parameter name="driver.capabilities.model" value="iPhone.*"></parameter>
+		<parameter name="env.resources"
+			value="src/main/resources/ios" />
+			<parameter name="env.load.locales"
+			value="en" />
+			<parameter name="env.default.locale"
+			value="en" />
+			<parameter name="perfecto.capabilities.language"
+			value="en" />
+			<parameter name="perfecto.capabilities.bundleId"
+			value="com.apple.mobilemail" />
+			
+
+
+		<groups>
+			<run>
+				<include name="regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.quantum.tests.mail.CheckHeader" />
+		</classes>
+	</test>
+</suite>
